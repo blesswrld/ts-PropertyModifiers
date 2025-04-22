@@ -17,11 +17,15 @@ const user: User = {
     addr: "abcdefg",
 };
 
-const dbName = "12345";
+let dbName: string;
+sendUserData(user, "dasasdas"); // Вызов функции
+
+console.log(dbName!); // `!` — оператор утверждения ненулевого значения (Non-Null)
 
 // Передаем объект интерфейса User в obj, и базу данных db - которая принимает в себя строку или значение undefined
 function sendUserData(obj: User, db?: string): void {
-    console.log(obj.parents?.father?.toLowerCase(), db?.toLowerCase());
+    dbName = "12345"; // Задаем значение для глобальной переменной
+    console.log(obj.parents!.father?.toLowerCase(), db!.toLowerCase()); // `!` — оператор утверждения ненулевого значения (Non-Null), используется, когда разработчик уверен, что свойство или значение не будет `null` или `undefined` во время выполнения
 }
 
 // tsc index.ts (команда в терминале для запуска компилятора ts кода)
